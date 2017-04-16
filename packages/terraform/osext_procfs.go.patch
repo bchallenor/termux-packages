@@ -1,0 +1,13 @@
+diff --git a/vendor/github.com/kardianos/osext/osext_procfs.go b/vendor/github.com/kardianos/osext/osext_procfs.go
+index d59847e..c6a5a95 100644
+--- a/vendor/github.com/kardianos/osext/osext_procfs.go
++++ b/vendor/github.com/kardianos/osext/osext_procfs.go
+@@ -16,6 +16,8 @@ import (
+ 
+ func executable() (string, error) {
+ 	switch runtime.GOOS {
++	case "android":
++		fallthrough
+ 	case "linux":
+ 		const deletedTag = " (deleted)"
+ 		execpath, err := os.Readlink("/proc/self/exe")
